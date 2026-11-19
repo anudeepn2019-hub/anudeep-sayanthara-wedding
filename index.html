@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f1e9">
+  <meta name="description" content="Celebrate the wedding reception of Anudeep and Sayanthara on 22 November 2026 at GKS Auditorium, Coimbatore.">
+  <title>Anudeep &amp; Sayanthara | Wedding Reception</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .music-control { position:fixed; right:18px; bottom:18px; z-index:20; }
+    #music-toggle {
+      display:flex; align-items:center; gap:9px; padding:12px 16px;
+      border:1px solid rgba(255,255,255,.65); border-radius:999px;
+      background:rgba(59,48,45,.94); color:#fffaf3;
+      font:600 .75rem var(--sans); letter-spacing:.06em; cursor:pointer;
+      box-shadow:0 5px 22px rgba(35,25,22,.2);
+    }
+    #music-toggle:hover { background:var(--rose); }
+    .music-icon { font-size:1.15rem; line-height:1; }
+
+    :root {
+      --ink: #332b29; --muted: #756963; --cream: #f7f1e9; --rose: #b87970;
+      --gold: #b89a6a; --white: #fffdf9; --line: rgba(93,70,57,.16);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--sans); }
+    a { color: inherit; }
+    .hero {
+      min-height: 100svh; position: relative; display: grid; place-items: center;
+      padding: 38px 22px; overflow: hidden; text-align: center;
+      background:
+        linear-gradient(135deg, rgba(40,30,27,.48), rgba(40,30,27,.22)),
+        url("photo-01.jpg") center 42%/cover no-repeat,
+        #76615a;
+      color: #fffaf3;
+    }
+    .hero::before { content:""; position:absolute; inset:16px; border:1px solid rgba(255,255,255,.48); pointer-events:none; }
+    .hero-content { position:relative; z-index:1; width:min(850px,100%); padding:45px 18px; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.28em; font-size:.72rem; font-weight:600; }
+    .hero h1 { margin:22px 0 8px; font:500 clamp(3.7rem, 11vw, 8rem)/.86 var(--serif); }
+    .amp { display:block; color:#f1d9b9; font-style:italic; font-size:.72em; margin:12px 0; }
+    .hero-sub { margin:24px 0 0; font:500 clamp(1.1rem, 3vw, 1.55rem) var(--serif); letter-spacing:.08em; }
+    .hero-date { margin-top:16px; font-size:.88rem; letter-spacing:.16em; text-transform:uppercase; }
+    .scroll-cue { display:inline-block; margin-top:44px; text-decoration:none; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,.65); padding-bottom:7px; }
+    nav { position:sticky; top:0; z-index:10; display:flex; justify-content:center; gap:clamp(15px,4vw,42px); padding:15px 12px; background:rgba(255,253,249,.94); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+    nav a { text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:.68rem; font-weight:700; color:var(--muted); }
+    nav a:hover { color:var(--rose); }
+    section { padding:88px 22px; }
+    .wrap { width:min(1050px,100%); margin:auto; }
+    .section-kicker { color:var(--rose); text-transform:uppercase; letter-spacing:.24em; font-size:.68rem; font-weight:700; text-align:center; }
+    h2 { margin:12px 0 18px; text-align:center; font:500 clamp(2.8rem,7vw,4.8rem)/.95 var(--serif); }
+    .intro { max-width:650px; margin:0 auto; color:var(--muted); text-align:center; line-height:1.9; font-size:.95rem; }
+    .countdown-section { background:var(--white); }
+    .countdown { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:720px; margin:38px auto 0; }
+    .time-box { padding:24px 10px; border:1px solid var(--line); background:#fcf8f2; text-align:center; }
+    .time-box strong { display:block; font:600 clamp(2rem,6vw,3.7rem)/1 var(--serif); color:var(--rose); }
+    .time-box span { display:block; margin-top:9px; text-transform:uppercase; letter-spacing:.16em; font-size:.62rem; color:var(--muted); }
+    #countdown-note { text-align:center; margin-top:18px; color:var(--muted); font-size:.82rem; }
+    .details-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:42px; }
+    .detail-card { text-align:center; padding:30px 22px; background:rgba(255,253,249,.72); border:1px solid var(--line); }
+    .detail-icon { font-size:1.35rem; color:var(--gold); }
+    .detail-card h3 { margin:12px 0 8px; font:600 1.7rem var(--serif); }
+    .detail-card p { margin:0; color:var(--muted); font-size:.88rem; line-height:1.8; }
+    .map-button { display:inline-block; margin-top:15px; padding:11px 17px; border:1px solid var(--rose); color:var(--rose); text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:.66rem; font-weight:700; transition:.2s; }
+    .map-button:hover { background:var(--rose); color:white; }
+    .gallery-section { background:#eee4da; }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:38px; }
+    .gallery button { border:0; padding:0; background:none; cursor:pointer; overflow:hidden; aspect-ratio:4/5; }
+    .gallery img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
+    .gallery button:hover img { transform:scale(1.045); }
+    .photo-placeholder { width:100%; height:100%; display:grid; place-items:center; padding:15px; color:#79675d; background:linear-gradient(145deg,#e3d3c5,#cdb7a7); font:italic 1.4rem var(--serif); }
+    .closing { text-align:center; background:var(--white); }
+    .closing .heart { color:var(--rose); font-size:1.5rem; }
+    .closing h2 { margin-bottom:12px; }
+    footer { padding:25px 15px; text-align:center; background:#3b302d; color:#eee1d5; font:italic 1.3rem var(--serif); }
+    .lightbox { display:none; position:fixed; inset:0; z-index:30; background:rgba(20,16,15,.92); align-items:center; justify-content:center; padding:25px; }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:min(100%,1000px); max-height:85vh; object-fit:contain; }
+    .lightbox button { position:absolute; top:18px; right:22px; border:0; background:none; color:white; font-size:2.2rem; cursor:pointer; }
+    @media(max-width:700px) {
+      section { padding:68px 18px; }
+      .details-grid { grid-template-columns:1fr; }
+      .gallery { grid-template-columns:repeat(2,1fr); gap:9px; }
+      nav { gap:17px; }
+      nav a { font-size:.58rem; letter-spacing:.08em; }
+      .countdown { gap:7px; }
+      .time-box { padding:19px 5px; }
+    }
+    @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *,*::before,*::after{transition:none!important} }
+  </style>
+</head>
+<body>
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <div class="eyebrow">Together with our families</div>
+      <h1>Anudeep <span class="amp">&amp;</span> Sayanthara</h1>
+      <p class="hero-sub">A celebration of love, laughter &amp; forever</p>
+      <div class="hero-date">Wedding Reception · 22 November 2026</div>
+      <a class="scroll-cue" href="#welcome">Celebrate with us ↓</a>
+    </div>
+  </header>
+
+  <nav aria-label="Main navigation">
+    <a href="#welcome">Welcome</a><a href="#countdown">Countdown</a><a href="#details">The Details</a><a href="#gallery">Our Moments</a>
+  </nav>
+
+  <main>
+    <section id="welcome">
+      <div class="wrap">
+        <div class="section-kicker">A beautiful beginning</div>
+        <h2>Two hearts. One story.</h2>
+        <p class="intro">With hearts full of happiness, we invite you to join us as we celebrate the beginning of our forever. Your presence, love and blessings will make our special evening even more meaningful.</p>
+      </div>
+    </section>
+
+    <section class="countdown-section" id="countdown">
+      <div class="wrap">
+        <div class="section-kicker">The big day is getting closer</div>
+        <h2>Counting every moment</h2>
+        <p class="intro">Until we celebrate together.</p>
+        <div class="countdown" aria-live="polite">
+          <div class="time-box"><strong id="days">—</strong><span>Days</span></div>
+          <div class="time-box"><strong id="hours">—</strong><span>Hours</span></div>
+          <div class="time-box"><strong id="minutes">—</strong><span>Minutes</span></div>
+          <div class="time-box"><strong id="seconds">—</strong><span>Seconds</span></div>
+        </div>
+        <p id="countdown-note">The celebration begins at 6:00 PM (India time).</p>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="wrap">
+        <div class="section-kicker">Save the date</div>
+        <h2>Join our celebration</h2>
+        <p class="intro">An evening made brighter by the people we love. We can't wait to welcome you.</p>
+        <div class="details-grid">
+          <article class="detail-card">
+            <div class="detail-icon">✧</div><h3>The Date</h3>
+            <p>Sunday<br><strong>22 November 2026</strong></p>
+          </article>
+          <article class="detail-card">
+            <div class="detail-icon">◷</div><h3>The Time</h3>
+            <p><strong>6:00 PM – 9:00 PM</strong><br>Kindly join us for the evening.</p>
+          </article>
+          <article class="detail-card">
+            <div class="detail-icon">⌖</div><h3>The Venue</h3>
+            <p><strong>GKS Auditorium</strong><br>Ganapathy, Coimbatore</p>
+            <a class="map-button" href="https://share.google/fLlykyw12dOOeHydI" target="_blank" rel="noopener noreferrer">Get directions ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+      <div class="wrap">
+        <div class="section-kicker">A glimpse into our story</div>
+        <h2>Moments to remember</h2>
+        <p class="intro">A few memories from our pre-wedding shoot. Tap any photo to view it.</p>
+        <div class="gallery" id="photo-gallery">
+          <button type="button" data-photo="photo-01.jpg" aria-label="View pre-wedding photo 1"><img src="photo-01.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 1" loading="lazy"></button>
+          <button type="button" data-photo="photo-02.jpg" aria-label="View pre-wedding photo 2"><img src="photo-02.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 2" loading="lazy"></button>
+          <button type="button" data-photo="photo-03.jpg" aria-label="View pre-wedding photo 3"><img src="photo-03.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 3" loading="lazy"></button>
+          <button type="button" data-photo="photo-04.jpg" aria-label="View pre-wedding photo 4"><img src="photo-04.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 4" loading="lazy"></button>
+          <button type="button" data-photo="photo-05.jpg" aria-label="View pre-wedding photo 5"><img src="photo-05.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 5" loading="lazy"></button>
+          <button type="button" data-photo="photo-06.jpg" aria-label="View pre-wedding photo 6"><img src="photo-06.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 6" loading="lazy"></button>
+          <button type="button" data-photo="photo-07.jpg" aria-label="View pre-wedding photo 7"><img src="photo-07.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 7" loading="lazy"></button>
+          <button type="button" data-photo="photo-08.jpg" aria-label="View pre-wedding photo 8"><img src="photo-08.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 8" loading="lazy"></button>
+          <button type="button" data-photo="photo-09.jpg" aria-label="View pre-wedding photo 9"><img src="photo-09.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 9" loading="lazy"></button>
+          <button type="button" data-photo="photo-10.jpg" aria-label="View pre-wedding photo 10"><img src="photo-10.jpg" alt="Anudeep and Sayanthara — pre-wedding photo 10" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <div class="heart">♥</div>
+        <h2>We would love to see you there</h2>
+        <p class="intro">Your presence will be the most beautiful part of our celebration.<br>With love, Anudeep &amp; Sayanthara</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>With love, today and always · Anudeep &amp; Sayanthara</footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button type="button" id="close-lightbox" aria-label="Close photo viewer">×</button>
+    <img id="lightbox-image" src="" alt="Expanded pre-wedding photograph">
+  </div>
+
+  <!-- Upload wedding-music.mp3 beside index.html in the GitHub repository. -->
+  <div class="music-control">
+    <button type="button" id="music-toggle" aria-label="Play background music" aria-pressed="false">
+      <span class="music-icon" aria-hidden="true">♫</span>
+      <span id="music-label">Play music</span>
+    </button>
+  </div>
+  <audio id="background-music" src="wedding-music.mp3" loop preload="none"></audio>
+
+  <script>
+    // Background music starts after the visitor taps Play (browser autoplay policy).
+    const music = document.getElementById("background-music");
+    const musicToggle = document.getElementById("music-toggle");
+    const musicLabel = document.getElementById("music-label");
+
+    musicToggle.addEventListener("click", async () => {
+      if (music.paused) {
+        try {
+          await music.play();
+          musicLabel.textContent = "Pause music";
+          musicToggle.setAttribute("aria-label", "Pause background music");
+          musicToggle.setAttribute("aria-pressed", "true");
+        } catch (error) {
+          musicLabel.textContent = "Tap to retry";
+        }
+      } else {
+        music.pause();
+        musicLabel.textContent = "Play music";
+        musicToggle.setAttribute("aria-label", "Play background music");
+        musicToggle.setAttribute("aria-pressed", "false");
+      }
+    });
+
+    music.addEventListener("error", () => {
+      musicLabel.textContent = "Add music file";
+      musicToggle.setAttribute("aria-label", "Background music file not found");
+    });
+
+    // Event time is fixed to India Standard Time (UTC+05:30).
+    // The timer uses the visitor's current clock and recalculates on every page load.
+    const eventTime = new Date("2026-11-22T18:00:00+05:30").getTime();
+    const pad = value => String(value).padStart(2, "0");
+
+    function updateCountdown() {
+      const remaining = eventTime - Date.now();
+      if (remaining <= 0) {
+        ["days", "hours", "minutes", "seconds"].forEach(id => document.getElementById(id).textContent = "00");
+        document.getElementById("countdown-note").textContent =
+          remaining > -3 * 60 * 60 * 1000
+            ? "The celebration is happening now. Let the memories begin!"
+            : "Thank you for celebrating with us!";
+        return;
+      }
+      const totalSeconds = Math.floor(remaining / 1000);
+      document.getElementById("days").textContent = Math.floor(totalSeconds / 86400);
+      document.getElementById("hours").textContent = pad(Math.floor((totalSeconds % 86400) / 3600));
+      document.getElementById("minutes").textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+      document.getElementById("seconds").textContent = pad(totalSeconds % 60);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Tap a gallery image to open it larger.
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    document.querySelectorAll("#photo-gallery button").forEach(button => {
+      button.addEventListener("click", () => {
+        lightboxImage.src = button.dataset.photo;
+        lightbox.classList.add("open");
+      });
+    });
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightboxImage.src = "";
+    }
+    document.getElementById("close-lightbox").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeLightbox(); });
+
+    // Show a friendly placeholder if a photo has not been uploaded yet.
+    document.querySelectorAll("#photo-gallery img").forEach(img => {
+      img.addEventListener("error", () => {
+        const placeholder = document.createElement("div");
+        placeholder.className = "photo-placeholder";
+        placeholder.textContent = "Add " + img.getAttribute("src");
+        img.replaceWith(placeholder);
+      }, { once: true });
+    });
+  </script>
+
+</body>
+</html>
