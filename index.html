@@ -194,6 +194,18 @@
   </div>
 
   <script>
+    const music = document.getElementById("background-music");
+const button = document.getElementById("music-toggle");
+
+button.addEventListener("click", async function() {
+  if (music.paused) {
+    await music.play();
+    button.innerHTML = "♫ Pause Music";
+  } else {
+    music.pause();
+    button.innerHTML = "♫ Play Music";
+  }
+});
     // Background music starts after the visitor taps Play (browser autoplay policy).
     const music = document.getElementById("background-music");
     const musicToggle = document.getElementById("music-toggle");
